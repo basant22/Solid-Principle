@@ -11,6 +11,7 @@ enum Route:Hashable{
     case signup
     case home
     case calculater
+    case tabView
     
     enum Patient:Hashable{
         case create
@@ -41,6 +42,8 @@ enum Route:Hashable{
             ContentView()
         case .calculater:
             CalculatorView()
+        case .tabView:
+            AppTabBarView()
         }
     }
 }

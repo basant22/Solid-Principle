@@ -12,7 +12,7 @@ struct UserListView: View {
         VStack{
             
         }.onAppear{
-            let network = BGRequestBuilder(baseURL: <#T##URL#>, endPoint: <#T##String#>)
+          //  let network = BGRequestBuilder(baseURL: <#T##URL#>, endPoint: <#T##String#>)
         }
     }
 }

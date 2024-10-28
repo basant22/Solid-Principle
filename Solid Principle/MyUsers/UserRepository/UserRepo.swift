@@ -8,5 +8,5 @@
 import Foundation
 import BGUtilityIos
  
-let networl = BGNetwork()
+//let networl = BGNetwork()
 

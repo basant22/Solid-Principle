@@ -6,13 +6,41 @@
 //
 
 import SwiftUI
+/*struct TabView1<SelectionValue,Content>:View where SelectionValue:Hashable,Content:View{
+    
+}
 
-struct CustomTabBarContainerView: View {
+struct TabView1<SelectionValue:Hashable,Content:View>:View{
+    
+}*/
+struct CustomTabBarContainerView<Content:View>: View {
+    @Binding var selection:TabBarItem
+    let content:Content
+    @State private var tabs:[TabBarItem] = []
+    init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content){
+        self._selection = selection
+        self.content = content()
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            ZStack(alignment: .bottom){
+                content
+                    .ignoresSafeArea()
+                CustomTabBarView(tabs: tabs, tabSelection: $selection, localSelection: selection)
+            }
+//        VStack(spacing:0){
+//            ZStack{
+//                content
+//            }
+//            CustomTabBarView(tabs: tabs, tabSelection: $selection)
+//        }
+        .onPreferenceChange(TabBarItemPrefrenceKey.self, perform: { value in
+            self.tabs = value
+        })
     }
 }
 
 #Preview {
-    CustomTabBarContainerView()
+    CustomTabBarContainerView(selection: .constant(.home)) {
+        Color.red
+    }
 }
