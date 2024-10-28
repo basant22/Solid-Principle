@@ -109,7 +109,7 @@ struct CustomPF: View {
             }
         }
         .onAppear{
-            let networ = BGNetwork()
+           // let networ = BGNetwork()
         }
         .padding()
     }
